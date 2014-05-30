@@ -1,0 +1,46 @@
+NAME="man-db"
+VERSION=2.6.7
+RELEASE=1
+CATEGORY="Base"
+SUMMARY="Man page viewer"
+DESCRIPTION="man-db is an implementation of the standard Unix documentation
+system accessed using the man command. It uses a Berkeley DB database in place
+of the traditional flat-text whatis databases."
+HOMEPAGE="http://www.nongnu.org/man-db/"
+SRC_URI="mirror://savannah/man-db/man-db-${VERSION}.tar.xz"
+PATCH_URI="
+	2.6.7-shared-libman.patch
+	2.6.7-shared-libmandb.patch
+"
+
+PKG_NAMES=${NAME}
+man_db_OBSOLETES="man"
+man_db_REQUIRES="groff gzip less lynx"
+man_db_CONTENTS="etc/defaults/ etc/p* usr/bin/ usr/libexec/ usr/sbin/
+	usr/share/doc/ usr/share/locale/ usr/share/man/"
+PKG_IGNORE="usr/lib/man-db/libman*"
+
+# Build dependencies only
+DEPEND="groff libgdbm-devel libpipeline-devel check"
+
+CYGCONF_ARGS="
+	--disable-setuid
+	--with-browser=lynx
+	--with-pager=less
+	--with-db=gdbm
+"
+
+src_test() {
+	cd ${B}
+	unset MANPATH
+	cygtest
+}
+
+src_install() {
+	cd ${B}
+	cyginstall
+	make_etc_defaults /etc/man_db.conf
+
+	# In Fedora, zsoelim is in groff as a symlink to soelim(1)
+#	rm -f ${D}/usr/bin/zsoelim.exe ${D}/usr/share/man/man1/zsoelim.*
+}

@@ -1,0 +1,10 @@
+Shared libmandb is a bit more complicated
+
+--- origsrc/man-db-2.6.7/lib/Makefile.am	2013-12-08 18:43:01.000000000 -0600
++++ src/man-db-2.6.7/lib/Makefile.am	2014-05-30 11:56:02.650041800 -0500
+@@ -62,4 +62,5 @@ libman_la_LIBADD = ../gnulib/lib/libgnu.
+ 
+ libman_la_LDFLAGS = \
+ 	-avoid-version -release $(VERSION) -rpath $(pkglibdir) \
++	-no-undefined \
+ 	$(libpipeline_LIBS)

@@ -10,7 +10,6 @@ HOMEPAGE="http://www.nongnu.org/man-db/"
 SRC_URI="mirror://savannah/man-db/man-db-${VERSION}.tar.xz"
 PATCH_URI="
 	2.6.7-shared-libman.patch
-	2.6.7-shared-libmandb.patch
 "
 
 PKG_NAMES=${NAME}

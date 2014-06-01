@@ -20,7 +20,7 @@ man_db_CONTENTS="etc/defaults/ etc/p* usr/bin/ usr/libexec/ usr/sbin/
 PKG_IGNORE="usr/lib/man-db/libman*"
 
 # Build dependencies only
-DEPEND="groff libgdbm-devel libpipeline-devel check"
+DEPEND="groff libgdbm-devel libpipeline-devel check po4a"
 
 CYGCONF_ARGS="
 	--disable-setuid

@@ -15,7 +15,7 @@ PATCH_URI="
 PKG_NAMES=${NAME}
 man_db_OBSOLETES="man"
 man_db_REQUIRES="groff gzip less lynx util-linux"
-man_db_CONTENTS="etc/defaults/ etc/p* usr/bin/ usr/libexec/ usr/sbin/
+man_db_CONTENTS="etc/defaults/ usr/bin/ usr/libexec/ usr/sbin/
 	usr/share/doc/ usr/share/locale/ usr/share/man/"
 PKG_IGNORE="usr/lib/man-db/libman*"
 

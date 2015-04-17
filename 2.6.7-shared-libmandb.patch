@@ -1,14 +1,6 @@
 These global symbols are used within libmandb, so if we want to make it
 shared, they need to be moved from each of the executables into the library
 
---- origsrc/man-db-2.6.7/libdb/Makefile.am	2013-12-08 18:43:01.000000000 -0600
-+++ src/man-db-2.6.7/libdb/Makefile.am	2014-05-30 12:02:03.758696100 -0500
-@@ -43,4 +43,4 @@ libmandb_la_SOURCES = \
- 
- libmandb_la_LIBADD = ../lib/libman.la $(DBLIBS)
- 
--libmandb_la_LDFLAGS = -avoid-version -release $(VERSION) -rpath $(pkglibdir)
-+libmandb_la_LDFLAGS = -avoid-version -release $(VERSION) -rpath $(pkglibdir) -no-undefined
 --- origsrc/man-db-2.6.7/libdb/db_ver.c	2013-12-08 18:38:13.000000000 -0600
 +++ src/man-db-2.6.7/libdb/db_ver.c	2014-05-30 12:03:48.648695400 -0500
 @@ -37,6 +37,10 @@

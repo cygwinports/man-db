@@ -1,5 +1,5 @@
 NAME="man-db"
-VERSION=2.7.1
+VERSION=2.7.4
 RELEASE=1
 CATEGORY="Base"
 SUMMARY="Man page viewer"
@@ -9,7 +9,7 @@ of the traditional flat-text whatis databases."
 HOMEPAGE="http://www.nongnu.org/man-db/"
 SRC_URI="mirror://savannah/man-db/man-db-${VERSION}.tar.xz"
 PATCH_URI="
-	2.6.7-shared-libmandb.patch
+	2.7.4-shared-libmandb.patch
 "
 
 PKG_NAMES=${NAME}

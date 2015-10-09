@@ -1,0 +1,63 @@
+--- origsrc/man-db-2.7.4/libdb/db_ver.c	2015-04-08 04:23:25.000000000 -0500
++++ src/man-db-2.7.4/libdb/db_ver.c	2015-10-08 21:17:15.986955600 -0500
+@@ -37,6 +37,8 @@
+ 
+ #include "mydbm.h"
+ 
++char *database = NULL;
++
+ int dbver_rd (MYDBM_FILE dbfile)
+ {
+ 	datum key, content;
+--- origsrc/man-db-2.7.4/src/accessdb.c	2015-04-08 04:23:25.000000000 -0500
++++ src/man-db-2.7.4/src/accessdb.c	2015-10-08 21:18:29.661811100 -0500
+@@ -49,9 +49,6 @@
+ char *program_name;
+ const char *cat_root;
+ 
+-/* for db_storage.c */
+-char *database;
+-
+ const char *argp_program_version = "accessdb " PACKAGE_VERSION;
+ const char *argp_program_bug_address = PACKAGE_BUGREPORT;
+ error_t argp_err_exit_status = FAIL;
+--- origsrc/man-db-2.7.4/src/catman.c	2015-04-08 04:23:25.000000000 -0500
++++ src/man-db-2.7.4/src/catman.c	2015-10-08 21:18:33.018237300 -0500
+@@ -85,7 +85,6 @@ int quiet = 1;
+ MYDBM_FILE dbf_close_post_fork;
+ char *manp;
+ extern char *user_config_file;
+-char *database;
+ static const char **sections;
+ 
+ const char *argp_program_version = "catman " PACKAGE_VERSION;
+--- origsrc/man-db-2.7.4/src/man.c	2015-10-07 19:44:31.000000000 -0500
++++ src/man-db-2.7.4/src/man.c	2015-10-08 21:18:45.220786900 -0500
+@@ -189,7 +189,6 @@ static char *manpathlist[MAXDIRS];
+ /* globals */
+ int quiet = 1;
+ char *program_name;
+-char *database = NULL;
+ extern const char *extension; /* for globbing.c */
+ extern char *user_config_file;	/* defined in manp.c */
+ extern int disable_cache;
+--- origsrc/man-db-2.7.4/src/mandb.c	2015-09-22 08:15:30.000000000 -0500
++++ src/man-db-2.7.4/src/mandb.c	2015-10-08 21:18:52.547217200 -0500
+@@ -76,7 +76,6 @@ char *program_name;
+ int quiet = 1;
+ extern int opt_test;		/* don't update db */
+ char *manp;
+-char *database = NULL;
+ extern char *extension;		/* for globbing.c */
+ extern int force_rescan;	/* for check_mandirs.c */
+ static char *single_filename = NULL;
+--- origsrc/man-db-2.7.4/src/whatis.c	2015-04-08 04:23:25.000000000 -0500
++++ src/man-db-2.7.4/src/whatis.c	2015-10-08 21:18:59.648619000 -0500
+@@ -85,7 +85,6 @@ static int num_keywords;
+ 
+ char *program_name;
+ int am_apropos;
+-char *database;
+ int quiet = 1;
+ 
+ #ifdef HAVE_ICONV

@@ -1,5 +1,5 @@
 NAME="man-db"
-VERSION=2.7.4
+VERSION=2.7.5
 RELEASE=1
 CATEGORY="Base"
 SUMMARY="Man page viewer"
@@ -10,11 +10,12 @@ HOMEPAGE="http://www.nongnu.org/man-db/"
 SRC_URI="mirror://savannah/man-db/man-db-${VERSION}.tar.xz"
 PATCH_URI="
 	2.7.4-shared-libmandb.patch
+	2.7.5-gnulib-cygwin25.patch
 "
 
 PKG_NAMES=${NAME}
 man_db_OBSOLETES="man"
-man_db_REQUIRES="groff gzip less libiconv lynx util-linux"
+man_db_REQUIRES="groff gzip less libiconv util-linux" # lynx
 man_db_CONTENTS="etc/defaults/ etc/p* usr/bin/ usr/libexec/ usr/sbin/
 	usr/share/doc/ usr/share/locale/ usr/share/man/ var/cache/man/"
 PKG_IGNORE="usr/lib/man-db/libman* usr/lib/tmpfiles.d/"

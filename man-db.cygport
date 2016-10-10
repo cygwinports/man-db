@@ -1,6 +1,6 @@
 NAME="man-db"
 VERSION=2.7.5
-RELEASE=1
+RELEASE=2
 CATEGORY="Base"
 SUMMARY="Man page viewer"
 DESCRIPTION="man-db is an implementation of the standard Unix documentation
@@ -47,6 +47,11 @@ src_install() {
 	cyginstall
 	make_etc_defaults /etc/man_db.conf
 	keepdir /var/cache/man
+
+	dodir /etc/postinstall
+	cat > ${D}/etc/postinstall/zp_${NAME}.sh <<_EOF
+[ ! -s /var/cache/man/index.db ] || /usr/bin/mandb -pq
+_EOF
 
 	# In Fedora, zsoelim is in groff as a symlink to soelim(1)
 #	rm -f ${D}/usr/bin/zsoelim.exe ${D}/usr/share/man/man1/zsoelim.*

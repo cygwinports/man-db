@@ -1,6 +1,6 @@
 NAME="man-db"
-VERSION=2.7.5
-RELEASE=2
+VERSION=2.7.6.1
+RELEASE=1
 CATEGORY="Base"
 SUMMARY="Man page viewer"
 DESCRIPTION="man-db is an implementation of the standard Unix documentation
@@ -29,6 +29,7 @@ src_compile() {
 	cd ${B}
 	cygconf \
 		"--with-sections=1 1p 8 2 3 3p 4 5 6 7 9 0p n" \
+		--disable-cache-owner \
 		--disable-setuid \
 		--with-browser=lynx \
 		--with-pager=less \
